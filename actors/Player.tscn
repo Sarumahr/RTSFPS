@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://actors/Player.gd" type="Script" id=1]
+[ext_resource path="res://actors/Weapon.gd" type="Script" id=2]
+[ext_resource path="res://assets/crosshair.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape" id=1]
+height = 1.5
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1, 0.25, 1 )
+
+[sub_resource type="CapsuleMesh" id=2]
+mid_height = 1.5
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="PlayerCollision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.75, 0 )
+shape = SubResource( 1 )
+
+[node name="FeetCollision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0 )
+shape = SubResource( 3 )
+
+[node name="RotationHelper" type="Spatial" parent="."]
+
+[node name="Head" type="CSGMesh" parent="RotationHelper"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, -1 )
+
+[node name="Camera" type="Camera" parent="RotationHelper/Head"]
+
+[node name="RayCast" type="RayCast" parent="RotationHelper/Head/Camera"]
+cast_to = Vector3( 0, 0, -100 )
+
+[node name="TextureRect" type="TextureRect" parent="RotationHelper/Head/Camera"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body" type="MeshInstance" parent="RotationHelper"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.75, 0 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="Weapon" type="Node" parent="."]
+script = ExtResource( 2 )
