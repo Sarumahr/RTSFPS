@@ -37,8 +37,8 @@ func _process(_delta):
 			fire()
 		elif not reloading:
 			reload()
-		if Input.is_action_just_pressed("reload") and not reloading:
-			reload()
+	if Input.is_action_just_pressed("reload") and not reloading and current_ammo < clip_size:
+		reload()
 			
 func fire():
 	print("Fired weapon")
