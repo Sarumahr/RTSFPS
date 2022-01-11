@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://actors/Player.gd" type="Script" id=1]
-[ext_resource path="res://actors/Weapon.gd" type="Script" id=2]
+[ext_resource path="res://actors/Shotgun.gd" type="Script" id=2]
 [ext_resource path="res://assets/crosshair.png" type="Texture" id=3]
+[ext_resource path="res://rifle.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 height = 1.5
@@ -31,9 +32,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, -1 )
 
 [node name="Camera" type="Camera" parent="RotationHelper/Head"]
 
-[node name="RayCast" type="RayCast" parent="RotationHelper/Head/Camera"]
-cast_to = Vector3( 0, 0, -100 )
-
 [node name="TextureRect" type="TextureRect" parent="RotationHelper/Head/Camera"]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -47,6 +45,17 @@ texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RayCast" type="RayCast" parent="RotationHelper/Head/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-07, -0.702254, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+
+[node name="Hand" type="Spatial" parent="RotationHelper/Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26765, -0.036514, -1.08261 )
+
+[node name="Gun" parent="RotationHelper/Head/Hand" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, -0.10031, 0.994956, 4.38467e-09, 0.994956, 0.10031, -4.34909e-08, 0, -0.648793, -0.469776 )
 
 [node name="Body" type="MeshInstance" parent="RotationHelper"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.75, 0 )

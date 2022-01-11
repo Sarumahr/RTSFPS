@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://actors/Weapon.gd" type="Script" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 1, 0.25, 0.25 )
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 2, 0.6, 0.6 )
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 0.5, 0.5, 0.5 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 0.25, 0.5, 0.25 )
+
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 0.25, 0.7, 0.25 )
+
+[sub_resource type="CubeMesh" id=6]
+size = Vector3( 0.6, 0.25, 0.25 )
+
+[node name="Gun" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Barrel" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.389, 0, 0 )
+
+[node name="Barrel_Mesh_01" type="MeshInstance" parent="Barrel"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Body" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.102, 0, 0 )
+
+[node name="Body_Mesh_01" type="MeshInstance" parent="Body"]
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="Stock" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.343, 0, 0 )
+
+[node name="Stock_Mesh_01" type="MeshInstance" parent="Stock"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Magazine" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.198, -0.551, 0 )
+
+[node name="Magazine_Mesh_01" type="MeshInstance" parent="Magazine"]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Grip" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.688, -0.659, 0 )
+
+[node name="Grip_Mesh_01" type="MeshInstance" parent="Grip"]
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Scope" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.423, 0.433, 0 )
+
+[node name="Scope_Mesh_01" type="MeshInstance" parent="Scope"]
+mesh = SubResource( 6 )
+material/0 = null

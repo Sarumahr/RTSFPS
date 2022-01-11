@@ -32,4 +32,4 @@ polygon = PoolVector2Array( 0, 0, 0, 3, 6, 0, 1, 0 )
 depth = 3.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.73806, 0, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.73806, 0, 0 )
